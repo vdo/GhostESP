@@ -176,6 +176,7 @@ void handle_crash(int argc, char **argv);
 void handle_coredump_cmd(int argc, char **argv);
 void handle_wpa3_compliance(int argc, char **argv);
 void handle_pineap_detection(int argc, char **argv);
+void handle_wpsplinter_cmd(int argc, char **argv);
 void handle_ap_enable_cmd(int argc, char **argv);
 void handle_chip_info_cmd(int argc, char **argv);
 void handle_devices_cmd(int argc, char **argv);

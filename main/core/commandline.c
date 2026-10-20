@@ -499,6 +499,7 @@ void register_commands() {
     register_command("coredump", handle_coredump_cmd);
 #endif
     register_command("pineap", handle_pineap_detection);
+    register_command("wpsplinter", handle_wpsplinter_cmd);
     register_command("wpa3check", handle_wpa3_compliance);
     register_command("apcred", handle_apcred);
     register_command("apenable", handle_ap_enable_cmd);

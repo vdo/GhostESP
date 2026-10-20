@@ -6,6 +6,7 @@
 #include "scans/wifi/port_scan.h"
 #include "scans/wifi/arp_scan.h"
 #include "scans/wifi/ssh_scan.h"
+#include "scans/wifi/wpsplinter_scan.h"
 #include "core/callbacks.h"  // For callback function declarations
 #include "core/network_constants.h" // For common port definitions
 #include "core/ouis.h"       // For OUI vendor lookup
@@ -2374,7 +2375,8 @@ void wifi_manager_start_monitor_mode(wifi_promiscuous_cb_t_t callback) {
     if (callback == wifi_beacon_scan_callback || callback == wifi_probe_scan_callback || 
         callback == wifi_deauth_scan_callback || callback == wifi_pwn_scan_callback ||
         callback == wifi_wps_detection_callback || callback == wifi_listen_probes_callback ||
-        callback == wifi_pineap_detector_callback || callback == wardriving_scan_callback) {
+        callback == wifi_pineap_detector_callback || callback == wardriving_scan_callback ||
+        callback == wifi_wpsplinter_callback) {
         // Management frames only
         filter.filter_mask = WIFI_PROMIS_FILTER_MASK_MGMT;
     } else if (callback == wifi_eapol_scan_callback) {
@@ -2489,6 +2491,9 @@ void wifi_manager_stop_monitor_mode() {
     }
     if (airspace_monitor_is_active()) {
         airspace_monitor_stop();
+    }
+    if (wpsplinter_scan_is_active()) {
+        wpsplinter_scan_stop();
     }
 
     // NOTE: Stopping the PineAP timer (channel_hop_timer) is handled by stop_pineap_detection() in callbacks.c

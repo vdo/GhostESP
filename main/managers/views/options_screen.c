@@ -22,6 +22,7 @@
 #include "io_manager.h"
 #include "esp_wifi.h"
 #include "managers/views/airspace_monitor_screen.h"
+#include "managers/views/wpsplinter_screen.h"
 #include "managers/views/channel_congestion_screen.h"
 #include "managers/views/hop_profile_screen.h"
 #include "managers/views/packet_monitor_screen.h"
@@ -1514,7 +1515,7 @@ static const char * const wifi_scan_select_options[] = {
 };
 
 static const char * const wifi_environment_options[] = {
-    "Environment Sweep", "Airspace Monitor", "PineAP Detection", "Flock Camera Detection", "Channel Congestion",
+    "Environment Sweep", "Airspace Monitor", "WPSplinter", "PineAP Detection", "Flock Camera Detection", "Channel Congestion",
     "Packet Monitor", "Packet Visualizer", "Hop Channels", NULL
 };
 
@@ -10026,6 +10027,11 @@ void option_event_cb(lv_event_t *e) {
 
     else if (strcmp(Selected_Option, "Airspace Monitor") == 0) {
         display_manager_switch_view(&airspace_monitor_view);
+        view_switched = true;
+    }
+
+    else if (strcmp(Selected_Option, "WPSplinter") == 0) {
+        display_manager_switch_view(&wpsplinter_view);
         view_switched = true;
     }
 

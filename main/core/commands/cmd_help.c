@@ -409,6 +409,15 @@ void handle_help(int argc, char **argv) {
         glog("    Usage: pineap [-s]\n");
         glog("    Arguments:\n");
         glog("        -s  : Stop PineAP detection\n\n");
+        glog("wpsplinter\n");
+        glog("    Description: Passive Broadcom WPS vulnerability fingerprinter.\n");
+        glog("    Usage: wpsplinter [-c <ch>] [-d <ms>] [-t <sec>] [-e csv|json]\n");
+        glog("           wpsplinter stop | list | export [csv|json]\n");
+        glog("    Arguments:\n");
+        glog("        -c  : lock to one channel (default: hop all)\n");
+        glog("        -d  : dwell/hop interval in ms (100-5000, default 450)\n");
+        glog("        -t  : timed scan, auto-stop and summarize (5-600 sec)\n");
+        glog("        -e  : auto-export at end of timed scan: csv or json\n\n");
         glog("flockscan\n");
         glog("    Description: Start Flock Safety camera detection.\n");
         glog("    Usage: flockscan\n\n");
